@@ -10,6 +10,7 @@ def conScan(tgtHost, tgtPort):
     except:
         print(f'Connection closed: Port {tgtPort}')
 
+# Scan Port
 def portScan(tgtHost, tgtPorts):
     try:
         tgtIP =gethostbyname(tgtHost)
@@ -24,5 +25,11 @@ def portScan(tgtHost, tgtPorts):
         print(f'Scan result of: {tgtIP}')
 
     setdefaulttimeout(1)
+
+    for tgtPort in tgtPorts:
+        print(f'Scanning Port: {tgtPort}')
+        conScan(tgtHost, int(tgtPort))
+
 if __name__ == '__main__':
-    conScan('216.58.207.238', 22)
+    # Google IP
+    portScan('google.com', [80, 22])
